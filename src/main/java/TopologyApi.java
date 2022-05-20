@@ -10,8 +10,10 @@ public class TopologyApi {
     ArrayList<Topology> topologies = new ArrayList<Topology>();
 
     /*
-    Read a topology from a json file into the memory by loading the topology and appending it
-    to topologies arrayList
+    Description: Read a topology from a json file into the memory
+    by loading the topology and appending it to topologies arrayList.
+    Parameters: fileName: the path of the given JSON file.
+    Return: Boolean, Return true if read successfully.
     */
     public boolean readJSON(String fileName){
         Topology topology = new Topology("");
@@ -20,7 +22,12 @@ public class TopologyApi {
         return true;
     }
 
-    // Write a json file of the specified topology with the same name
+    /*
+    Description: Write a json file of the specified topology with the same name.
+    Parameters: TopologyID: the ID of the topology that wanted to be written into disk as a JSON file.
+    Return: Boolean, Return true if wrote successfully.
+    throws: JSONException
+    */
     public boolean writeJson(String TopologyID) throws JSONException {
         int idx = getTopIdx(TopologyID);
         if(getTopIdx(TopologyID) != -1){
@@ -40,7 +47,11 @@ public class TopologyApi {
         return -1;
     }
 
-    // Delete the topology with the name topologyId from the topologies array list
+    /*
+    Description: Delete the topology with the id topologyId from the topologies API's memory.
+    Parameters: TopologyID: the ID of the topology that wanted to be deleted.
+    Return: Boolean, Return true if deleted successfully.
+    */
     public boolean deleteTopology(String TopologyID){
         int idx = getTopIdx(TopologyID);
         if(getTopIdx(TopologyID) != -1){
@@ -51,12 +62,20 @@ public class TopologyApi {
             return false;
     }
 
-    // Return all the topologies in memory
+    /*
+    Description: Query about all topologies are currently in the API's memory.
+    Parameters: void.
+    Return: ArrayList.
+    */
     public ArrayList<Topology> queryTopologies(){
         return topologies;
     }
 
-    // Return a list of the devices in the specified topology
+    /*
+    Description: Query about all the devices in the specified topology.
+    Parameters: TopologyID: the ID of the topology that wanted to be written into disk as a JSON file.
+    Return: ArrayList.
+    */
     public ArrayList<Component> queryDevices(String TopologyID){
         int idx = getTopIdx(TopologyID);
         if(getTopIdx(TopologyID) != -1){
@@ -66,7 +85,13 @@ public class TopologyApi {
             return null;
     }
 
-    // Return a list of the devices that share the specified node list
+    /*
+    Description: Query about which devices are connected to netlist node in given topology.
+    Parameters:
+        1- TopologyID: the ID of the topology that wanted to be written into disk as a JSON file.
+        2- netlistNodeId: the given node to query components connected to it.
+    Return: ArrayList.
+    */
     public ArrayList<Component> queryDevicesWithNetlistNode(String TopologyID, String netlistNodeId){
         Topology topology = null;
         int idx = getTopIdx(TopologyID);
