@@ -7,6 +7,8 @@
 
 All of this to provide the functionality to access, manage and store device topologies.
 
+#### Topology Specification
+A topology is a set of electronic components that are connected together.
 
 ### Functional Requirements
 Provide the functionality to :
