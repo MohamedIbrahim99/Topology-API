@@ -36,7 +36,6 @@ Provide the functionality to :
 Developed this project is in an object-oriented manner.
 
 
-
 ### API Documentation
 
 ##### readJSON(String fileName)
@@ -73,6 +72,14 @@ Developed this project is in an object-oriented manner.
   2- netlistNodeId: the given node to query components connected to it.
 - Return: ArrayList<Component>.
 
+### Archeticture notes
+- API is in a separate class.
+- Each topology consists of several components.
+- Each topology stores its full netlist.
+- There are two kinds of components : resistors and NMOS.
+- Resistor class and NMOS class inherit from the Component class.
+
+    
 ### Unit Testing
 
 
