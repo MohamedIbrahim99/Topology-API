@@ -27,8 +27,7 @@ public class TopologyApi {
             topologies.get(idx).writeJson();
             return true;
         }
-        else
-            return false;
+        return false;
     }
 
     // Return the index of the desired topology in the topologies list
