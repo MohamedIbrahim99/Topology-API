@@ -10,13 +10,17 @@ public class Resistor extends Component{
         super(type, id, default_Val, min, max, netlist);
     }
 
+    public Resistor() {
+        super();
+    }
+
     // Print the data of the resistor in ordered manner
     @Override
     public void printComponent() {
         System.out.println("Resistor");
         super.printComponent();
-        System.out.println("t1: "+ this.getSpecifications().getNetlist().get("t1"));
-        System.out.println("t2: "+ this.getSpecifications().getNetlist().get("t2"));
+        System.out.println("t1: "+ getT1());
+        System.out.println("t2: "+ getT2());
     }
 
 
@@ -60,11 +64,19 @@ public class Resistor extends Component{
 
         // netlist object
         JSONObject netlist = new JSONObject();
-        netlist.put("t1", s.getNetlist().get("t1"));
-        netlist.put("t2", s.getNetlist().get("t2"));
+        netlist.put("t1", getT1());
+        netlist.put("t2", getT2());
         obj.put("netlist", netlist);
 
         return obj;
+    }
+
+    public String getT1() {
+        return this.getSpecifications().getNetlist().get("t1");
+    }
+
+    public String getT2() {
+        return this.getSpecifications().getNetlist().get("t2");
     }
 
 }

@@ -49,5 +49,6 @@ public class Specifications {
     public void setNetlist(HashMap<String, String> netlist) {
         this.netlist = netlist;
     }
+
 }
 

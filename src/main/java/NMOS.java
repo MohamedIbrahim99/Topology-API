@@ -8,14 +8,18 @@ public class NMOS extends Component{
         super(type, id, default_Val, min, max, netlist);
     }
 
+    public NMOS() {
+        super();
+    }
+
     // Print the data of the resistor in ordered manner
     @Override
     public void printComponent() {
         System.out.println("NMOS");
         super.printComponent();
-        System.out.println("drain: "+ this.getSpecifications().getNetlist().get("drain"));
-        System.out.println("gate: "+ this.getSpecifications().getNetlist().get("gate"));
-        System.out.println("source: "+ this.getSpecifications().getNetlist().get("source"));
+        System.out.println("drain: "+ getDrain());
+        System.out.println("gate: "+ getGate());
+        System.out.println("source: "+ getSource());
     }
 
 
@@ -62,12 +66,24 @@ public class NMOS extends Component{
 
         // netlist object
         JSONObject netlist = new JSONObject();
-        netlist.put("drain", s.getNetlist().get("drain"));
-        netlist.put("gate", s.getNetlist().get("gate"));
-        netlist.put("source", s.getNetlist().get("source"));
+        netlist.put("drain", getDrain());
+        netlist.put("gate", getGate());
+        netlist.put("source", getSource());
         obj.put("netlist", netlist);
 
         return obj;
+    }
+
+    public String getDrain() {
+        return this.getSpecifications().getNetlist().get("drain");
+    }
+
+    public String getGate() {
+        return this.getSpecifications().getNetlist().get("gate");
+    }
+
+    public String getSource() {
+        return this.getSpecifications().getNetlist().get("source");
     }
 
 }

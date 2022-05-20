@@ -12,6 +12,10 @@ public abstract class Component {
     private Specifications specs ;
 
     // Constructor
+    public Component() {
+    }
+
+    // Constructor
     public Component(String type, String id, double default_Val, double min, double max, HashMap<String, String> netlist){
         this.type = type;
         this.id = id;
