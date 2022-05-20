@@ -1,7 +1,6 @@
-import net.minidev.json.parser.JSONParser;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -87,7 +86,7 @@ public class Topology {
             String name = (String) jsonObject.get("id");
             id = name;
             JSONArray comps = (JSONArray) jsonObject.get("components");
-            for (int i = 0 ; i < comps.length() ; i++) {
+            for (int i = 0 ; i < comps.size() ; i++) {
                 JSONObject jsonObject1 = (JSONObject) comps.get(i);
                 if(jsonObject1.get("type").equals("resistor")){
                     Resistor resistor = new Resistor();
@@ -108,12 +107,12 @@ public class Topology {
 
     /* Write the topology to a json file
        the file name is the topology id */
-    public void writeJson() throws JSONException {
+    public void writeJson(){
         JSONObject obj = new JSONObject();
         obj.put("id", getId());
         JSONArray comps = new JSONArray();
         for(Component c: components){
-            comps.put(c.getComponent());
+            comps.add(c.getComponent());
         }
         obj.put("components", comps);
 
@@ -146,6 +145,16 @@ public class Topology {
             // add if item is not already in list
             if(!devList.contains(newDev)) devList.add(newDev);
         }
+    }
+
+    public void printTopology (){
+        System.out.println("Topology : ");
+        for (int i = 0 ; i < components.size() ; i++){
+            Component c = components.get(i);
+            System.out.println("Component number " + i + " : ");
+            c.printComponent();
+        }
+        System.out.println("--------------");
     }
 
 }

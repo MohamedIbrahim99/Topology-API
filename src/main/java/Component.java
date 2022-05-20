@@ -1,5 +1,4 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import org.json.simple.JSONObject;
 
 import java.util.HashMap;
 
@@ -48,11 +47,11 @@ public abstract class Component {
     }
 
     // Build the Component from a json object
-    public void buildComponent(JSONObject jsonObject) throws JSONException {}
+    public void buildComponent(JSONObject jsonObject) {}
 
 
     // Get a json object representing the Component from the class so it can be written to a json file
-    public JSONObject getComponent() throws JSONException {
+    public JSONObject getComponent() {
         return null;
     }
 

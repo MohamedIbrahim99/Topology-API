@@ -1,5 +1,4 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import org.json.simple.JSONObject;
 
 import java.util.HashMap;
 
@@ -26,14 +25,14 @@ public class Resistor extends Component{
 
     // Build the Component from a json object
     @Override
-    public void buildComponent(JSONObject jsonObject) throws JSONException {
+    public void buildComponent(JSONObject jsonObject) {
         String type = (String) jsonObject.get("type");
         String id = (String) jsonObject.get("id");
 
         JSONObject obj = (JSONObject) jsonObject.get("resistance");
-        double default_Val = (double) obj.get("default");
-        double min = (double) obj.get("min");
-        double max = (double) obj.get("max");
+        double default_Val = (long) obj.get("default");
+        double min = (long) obj.get("min");
+        double max = (long) obj.get("max");
 
         obj = (JSONObject) jsonObject.get("netlist");
         String T1 = (String) obj.get("t1");
@@ -49,7 +48,7 @@ public class Resistor extends Component{
     }
 
     // Get a json object representing the Component from the class so it can be written to a json file
-    public JSONObject getComponent() throws JSONException {
+    public JSONObject getComponent() {
         JSONObject obj = new JSONObject();
         obj.put("type", getType());
         obj.put("id", getId());
