@@ -68,8 +68,8 @@ Developed this project is in an object-oriented manner.
 ##### queryDevicesWithNetlistNode(String TopologyID, String netlistNodeId)
 - Description: Query about which devices are connected to netlist node in given topology.
 - Parameters: 
-  1- TopologyID: the ID of the topology that wanted to be written into disk as a JSON file.
-  2- netlistNodeId: the given node to query components connected to it.
+    - TopologyID: the ID of the topology that wanted to be written into disk as a JSON file.
+    - netlistNodeId: the given node to query components connected to it.
 - Return: ArrayList<Component>.
 
 ### Archeticture notes
