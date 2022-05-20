@@ -47,6 +47,10 @@ public class Topology {
         return null;
     }
 
+    public ArrayList<String> getNetlistComponents(String netlistName){
+        return netlist.get(netlistName);
+    }
+
     // Remove the component with the specified id
     public boolean removeComponent(String id){
         for(int i = 0; i < components.size() ; i++){
@@ -130,16 +134,15 @@ public class Topology {
         }
     }
 
-    // helper function used to modify the netlist hashmap
     public synchronized void addToNetList(String mapKey, String newDev) {
         ArrayList<String> devList = netlist.get(mapKey);
-
         // if list does not exist create it
         if(devList == null) {
             devList = new ArrayList<String>();
             devList.add(newDev);
             netlist.put(mapKey, devList);
-        } else {
+        }
+        else {
             // add if item is not already in list
             if(!devList.contains(newDev)) devList.add(newDev);
         }
